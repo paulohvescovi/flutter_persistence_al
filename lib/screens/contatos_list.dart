@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_persistence_al/screens/contato_form.dart';
 
 class ContatosList extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,15 @@ class ContatosList extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ContatoForm(),
+            ),
+          ).then((novoContato) => {
+
+          });
+        },
         child: Icon(
           Icons.add,
           color: Colors.white,
