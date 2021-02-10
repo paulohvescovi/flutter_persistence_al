@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_persistence_al/database/dao/contato_dao.dart';
 import 'package:flutter_persistence_al/models/Contato.dart';
 
 class ContatoForm extends StatefulWidget {
@@ -12,6 +13,7 @@ class _ContatoFormState extends State<ContatoForm> {
 
   final TextEditingController _nomeController = TextEditingController();
   final TextEditingController _numeroContaController = TextEditingController();
+  final ContatoDao contatoDao = ContatoDao();
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +58,7 @@ class _ContatoFormState extends State<ContatoForm> {
                     final int numeroConta = int.tryParse(_numeroContaController.text);
 
                     final Contato contato = new Contato(0, nomeCompleto, numeroConta);
-                    Navigator.pop(context, contato);
-
+                    contatoDao.save(contato).then((id) => Navigator.pop(context));
                   },
                 ),
               ),
